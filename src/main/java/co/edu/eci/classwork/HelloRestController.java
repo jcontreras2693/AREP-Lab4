@@ -1,4 +1,4 @@
-package co.edu.eci;
+package co.edu.eci.classwork;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

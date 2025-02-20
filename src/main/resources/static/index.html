@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon Team</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="../images/pokeball.ico" type="image/x-icon">
+</head>
+<body>
+<header>Equipo Pokémon</header>
+<div class="container">
+  <section class="form-section">
+    <h2>Agregar un Pokémon</h2>
+    <form id="addPokemonForm" onsubmit="return false;">
+      <input type="text" id="pokemonName" placeholder="Nombre" maxlength="30" required>
+      <input type="number" id="pokemonLevel" placeholder="Nivel" min="1" max="100" required>
+      <button type="submit">Agregar al Equipo</button>
+    </form>
+  </section>
+  <section class="team-section">
+    <h2>Equipo Actual</h2>
+    <div id="teamContainer">
+    </div>
+  </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
