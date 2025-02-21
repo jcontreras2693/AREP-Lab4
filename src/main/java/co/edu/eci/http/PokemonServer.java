@@ -6,6 +6,10 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.function.BiFunction;
 import co.edu.eci.model.Pokemon;
 
@@ -15,7 +19,11 @@ public class PokemonServer {
 
     private static String staticFilesDir = "src/main/resources/web";
 
-    private static final List<Pokemon> pokemonTeam = new ArrayList<>();
+    private static final ConcurrentLinkedQueue<Pokemon> pokemonTeam = new ConcurrentLinkedQueue<>();
+
+    private static final int THREADS = 10;
+    private static ExecutorService threadPool = Executors.newFixedThreadPool(THREADS);
+    private static boolean running = true;
 
     public static void get(String route, BiFunction<Request, Response, String> handler) {
         if (!route.startsWith("/api/pokemon"))
@@ -215,7 +223,7 @@ public class PokemonServer {
         Map<String, String> map = new HashMap<>();
 
         if (json == null || json.isEmpty()) {
-            return map; // Devuelve un mapa vacío si el JSON está vacío
+            return map;
         }
 
         json = json.trim();
@@ -223,7 +231,7 @@ public class PokemonServer {
         if (json.startsWith("{") && json.endsWith("}")) {
             json = json.substring(1, json.length() - 1); // Elimina llaves solo si existen
         } else {
-            return map; // Si no es un JSON válido, devuelve un mapa vacío
+            return map;
         }
 
         String[] pairs = json.split(",");
@@ -237,5 +245,18 @@ public class PokemonServer {
             }
         }
         return map;
+    }
+
+    public static void stop() {
+        running = false;
+        threadPool.shutdown();
+        try {
+            if (!threadPool.awaitTermination(60, TimeUnit.SECONDS)) {
+                threadPool.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            threadPool.shutdownNow();
+        }
+        System.out.println("Server stopped");
     }
 }

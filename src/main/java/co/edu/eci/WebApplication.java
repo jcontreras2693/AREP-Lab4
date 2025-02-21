@@ -5,7 +5,6 @@ import co.edu.eci.annotations.PostMapping;
 import co.edu.eci.annotations.RestController;
 import org.reflections.Reflections;
 
-
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +22,10 @@ public class WebApplication {
     public static Map<String, Object> controllers = new HashMap<>();
 
     public static void main(String[] args) throws Exception {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Deteniendo elegantemente...");
+            PokemonServer.stop();
+        }));
         System.out.println("Iniciando WebApplication en forma de Mini SpringBoot...");
         loadComponents();
         PokemonServer.staticFiles("src/main/resources/static");

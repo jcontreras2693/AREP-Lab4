@@ -7,10 +7,11 @@ import co.edu.eci.annotations.RestController;
 import co.edu.eci.model.Pokemon;
 
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @RestController
 public class PokemonController {
-    private final List<Pokemon> pokemonTeam = new ArrayList<>();
+    private final List<Pokemon> pokemonTeam = new CopyOnWriteArrayList<>();
 
     public PokemonController() {
         // Se agrega un Pokémon inicial
