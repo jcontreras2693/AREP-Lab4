@@ -37,55 +37,63 @@ git --version
 
 1. Download the repository from GitHub in a .zip or clone it to your local machine using Git.
 
-```
-git clone https://github.com/jcontreras2693/AREP-Lab4.git
-```
-
+    ```
+    git clone https://github.com/jcontreras2693/AREP-Lab4.git
+    ```
+   
 2. Navigate to the project directory.
 
-```
-cd AREP-Lab4
-```
-
+    ```
+    cd AREP-Lab4
+    ```
+   
 3. Build the project by running the following command:
 
-```
-mvn clean compile
-```
+    ```
+    mvn clean compile
+    ```
 
 4. Execute the project with the following command:
 
-```
-mvn exec:java -Dexec.mainClass="co.edu.eci.WebApplication"
-```
-5. The installation process will have been successful if you see a message like this in your command console. (If this steps didn't work, execute the project directly from IntelliJ)
+    ```
+    mvn exec:java -Dexec.mainClass="co.edu.eci.WebApplication"
+    ```
 
-![](src/main/resources/images/succes.png)
+5. From IntellIj terminal you can also use this one:
 
-6. Finally, access the address [localhost:35000](http://localhost:35000/) from a web browser to interact with the web application.
+    ```
+    java -cp "target/classes;target/dependency/*" co.edu.eci.WebApplication
+    ```
 
-- Home page example.
+6. The installation process will have been successful if you see a message like this in your command console. (If this steps didn't work, execute the project directly from IntelliJ)
 
-    ![](src/main/resources/images/home-page.png)
+    ![](src/main/resources/images/succes.png)
 
-- Home page Post Request example.
+7. Finally, access the address [localhost:35000](http://localhost:35000/) from a web browser to interact with the web application.
 
-    ![](src/main/resources/images/employed-page.png)
+   - Home page example.
 
-- Get Request on /pi.
+       ![](src/main/resources/images/home-page.png)
 
-  ![](src/main/resources/images/pi-endpoint.png)
+   - Home page Post Request example.
 
-- Get Request on /api/pokemon.
+       ![](src/main/resources/images/employed-page.png)
 
-    ![](src/main/resources/images/api-pokemon.png)
+   - Get Request on /pi.
 
-- Post Request on /api/pokemon.
+     ![](src/main/resources/images/pi-endpoint.png)
 
-  ![](src/main/resources/images/post-pokemon.png)
+   - Get Request on /api/pokemon.
+
+       ![](src/main/resources/images/api-pokemon.png)
+
+   - Post Request on /api/pokemon.
+
+     ![](src/main/resources/images/post-pokemon.png)
 
 ## Concurency
-- The servers uses ThreadPools to manage and control the concurrency of the server. PokemonTeam array was replaced by a thread save data structures.
+- The servers uses ThreadPools to manage and control the concurrency of the server and PokemonTeam array was replaced by a thread save data structures.
+
   ```
   public class PokemonServer {
     ...
@@ -101,6 +109,7 @@ mvn exec:java -Dexec.mainClass="co.edu.eci.WebApplication"
   ```
   
 - Graceful shutdown.
+
   ```
   public static void stop() {
     running = false;
@@ -117,15 +126,25 @@ mvn exec:java -Dexec.mainClass="co.edu.eci.WebApplication"
   ```
 
 ## Application Running on Docker
+
+- Containers creation
+
+  ![](src/main/resources/images/container-creation.png)
+
 - Containers running
+
   ![](src/main/resources/images/docker1.png)
+
   ![](src/main/resources/images/docker2.png)
+
   ![](src/main/resources/images/docker3.png)
 
 - Images
+
   ![](src/main/resources/images/docker-images.png)
 
 - Containers
+
   ![](src/main/resources/images/docker-containers.png)
 
 ## Running the Tests

@@ -194,7 +194,15 @@ public class PokemonServer {
 
     private static void serveStaticFile(String path, OutputStream out) throws IOException {
         if (path.equals("/")) path = "/index.html";
-        File file = new File(staticFilesDir + path);
+
+        String dockerEnv = System.getenv("DOCKER_ENV");
+        File file;
+        if (dockerEnv != null && dockerEnv.equals("true")) {
+            file = new File("/usrapp/bin/resources/static" + path);
+        } else {
+            file = new File("src/main/resources/static" + path);
+        }
+
         if (file.exists() && !file.isDirectory()) {
             byte[] fileBytes = Files.readAllBytes(file.toPath());
             String contentType = getMimeType(path);
