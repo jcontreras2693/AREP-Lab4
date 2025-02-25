@@ -5,7 +5,7 @@ document.getElementById('addPokemonForm').addEventListener('submit', async (e) =
     const level = parseInt(document.getElementById('pokemonLevel').value);
 
     // Enviar POST al servidor
-    const response = await fetch('http://localhost:35000/api/pokemon', {
+    const response = await fetch('/api/pokemon', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -21,7 +21,7 @@ document.getElementById('addPokemonForm').addEventListener('submit', async (e) =
 });
 async function updateTeamList() {
     // Obtener lista actualizada
-    const response = await fetch('http://localhost:35000/api/pokemon');
+    const response = await fetch('/api/pokemon');
     const team = await response.json();
 
     const container = document.getElementById('teamContainer');

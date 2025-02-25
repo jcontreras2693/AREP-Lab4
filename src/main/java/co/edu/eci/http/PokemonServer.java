@@ -17,7 +17,7 @@ public class PokemonServer {
     private static final Map<String, BiFunction<Request, Response, String>> getRoutes = new HashMap<>();
     private static final Map<String, BiFunction<Request, Response, String>> postRoutes = new HashMap<>();
 
-    private static String staticFilesDir = "src/main/resources/web";
+    private static String staticFilesDir = "src/main/resources/static";
 
     private static final ConcurrentLinkedQueue<Pokemon> pokemonTeam = new ConcurrentLinkedQueue<>();
 

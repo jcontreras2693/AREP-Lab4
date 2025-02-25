@@ -73,6 +73,9 @@ public class WebApplication {
         return reflections.getTypesAnnotatedWith(RestController.class);
     }
 
+    /**
+     * Código tomado y adaptado de Ana María Durán.
+     */
     private static String invokeMethod(Method method, Object instance, Request req) {
         try {
             Parameter[] parameters = method.getParameters();
