@@ -133,11 +133,17 @@ git --version
 
 - Containers running
 
-  ![](src/main/resources/images/docker1.png)
+  - PORT: 34000
 
-  ![](src/main/resources/images/docker2.png)
+    ![](src/main/resources/images/docker1.png)
 
-  ![](src/main/resources/images/docker3.png)
+  - PORT: 34001
+
+    ![](src/main/resources/images/docker2.png)
+
+  - PORT: 34002
+
+    ![](src/main/resources/images/docker3.png)
 
 - Images
 
